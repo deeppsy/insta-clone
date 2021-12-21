@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
-import { DEFAULT_IMAGE_PATH } from "../constants/paths";
+import { DEFAULT_IMAGE_PATH } from "../../constants/general";
 
 function User({ username, fullName }) {
   if (!username || !fullName) {

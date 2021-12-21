@@ -5,7 +5,7 @@ import {
   updateLoggedInUserFollowing,
   updateFollowedUserFollowers,
 } from "../../services/firebase";
-import { DEFAULT_IMAGE_PATH } from "../constants/paths";
+import { DEFAULT_IMAGE_PATH } from "../../constants/general";
 
 export default function SuggestedProfile({
   profileDocId,
