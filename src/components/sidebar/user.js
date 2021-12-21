@@ -2,6 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import Skeleton from "react-loading-skeleton";
+import { DEFAULT_IMAGE_PATH } from "../constants/paths";
 
 function User({ username, fullName }) {
   if (!username || !fullName) {
@@ -17,6 +18,9 @@ function User({ username, fullName }) {
             className="rounded-full w-16 flex mr-3"
             alt=""
             src={`/images/avatars/${username}.jpg`}
+            onError={(e) => {
+              e.target.src = DEFAULT_IMAGE_PATH;
+            }}
           />
         </div>
 

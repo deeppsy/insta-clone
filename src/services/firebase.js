@@ -27,19 +27,21 @@ export async function getUserbyUserId(userId) {
 }
 
 export async function getSuggestedProfileByUserId(userId, following) {
-  const result = await firebase.firestore().collection("users").limit(10).get();
+  let query = firebase.firestore().collection("users");
 
-  const res = result.docs
-    .map((user) => ({
-      ...user.data(),
-      docId: user.id,
-    }))
-    .filter(
-      (profile) =>
-        profile.userId !== userId && !following.includes(profile.userId)
-    );
+  if (following.length > 0) {
+    query = query.where("userId", "not-in", [...following, userId]);
+  } else {
+    query = query.where("userId", "!=", userId);
+  }
+  const result = await query.limit(10).get();
 
-  return res;
+  const profiles = result.docs.map((user) => ({
+    ...user.data(),
+    docId: user.id,
+  }));
+
+  return profiles;
 }
 
 export async function updateLoggedInUserFollowing(

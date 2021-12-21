@@ -82,7 +82,7 @@ export default function Login() {
               className={`bg-blue-medium text-white w-full rounded h-8 font-bold
           ${isInvalid && "opacity-50"}`}
             >
-              Log in
+              Login
             </button>
           </form>
         </div>

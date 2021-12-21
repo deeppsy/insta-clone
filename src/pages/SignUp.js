@@ -73,6 +73,7 @@ export default function Signup() {
         setError(e.message.slice(10));
       }
     } else {
+      setUsername("");
       setError("This username is already taken, please try another!");
 
       setUsername("");
